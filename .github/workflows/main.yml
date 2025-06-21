@@ -13,6 +13,7 @@ jobs:
       BUILDROOT: "buildroot_${{ matrix.platform }}"
       GIT_DEPENDENCIES: libfragmentzip,libfwkeyfetch,libgeneral,libplist
       MAC_DYNAMIC_LIBS: openssl
+      GIT_OWNER: tihmstar
 
     steps:
     - uses: actions/checkout@v4
@@ -62,7 +63,7 @@ jobs:
         IFS=',' read -r -a deparray <<< "$GIT_DEPENDENCIES"; for d in ${deparray[@]}; do
           dep=$d
           if ! echo ${dep} | grep -q '/'; then
-            dep=${{ github.repository_owner }}/${dep}
+            dep=${{ env.GIT_OWNER }}/${dep}
           fi
           echo "Got dependency: ${dep}"
           tag=$(get_latest_release ${dep});
