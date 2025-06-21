@@ -7,7 +7,7 @@ jobs:
 
     strategy:
       matrix:
-        platform: [ubuntu-latest, macos-latest, macos-latest-large]
+        platform: [ubuntu-latest, macos-latest, macos-13]
     runs-on: ${{ matrix.platform }}
     env:
       BUILDROOT: "buildroot_${{ matrix.platform }}"
