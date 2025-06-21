@@ -38,7 +38,7 @@ jobs:
 
           cd $(brew --prefix openssl)
           sudo mkdir -p /usr/local/lib/pkgconfig/
-          sudo cp -r lib/pkgconfig/* /usr/local/lib/pkgconfig/
+          sudo cp -r lib/pkgconfig/* /usr/local/lib/pkgconfig/ || true
           cd $GITHUB_WORKSPACE
 
          else
